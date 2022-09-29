@@ -12,6 +12,5 @@ jobs:
       - name: Get PR labels
         id: pr-labels
         uses: joerick/pr-labels-action@v1.0.6
-      - run: |
-          bin/publish_flimbomble_test_results
-        if: contains(steps.pr-labels.outputs.labels, ' test-flimbomble ')
+      - run: echo "HEY"
+        if: contains(steps.pr-labels.outputs.labels, ' storefront ')
