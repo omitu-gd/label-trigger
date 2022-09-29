@@ -22,4 +22,4 @@ jobs:
       - name: Get Commit Message
         run: |
           MSG=$(git log -1 --format=%s)
-          echo "${MSG}"
+          echo "${MSG} ==== ${MSG}"
