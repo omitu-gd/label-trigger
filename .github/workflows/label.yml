@@ -20,6 +20,6 @@ jobs:
           fetch-depth: 0
           ref: ${{github.event.after}}
       - name: Get Commit Message
-        run: echo "$(/usr/bin/git log -1 --format=%s)"
+        run: echo "$(/usr/bin/git log -10 --format=%s)"
       - name: Get Commit Message1
-        run: echo "$(git log -1 --format=%s) 123"
+        run: echo "$(git log -10 --format=%s) 123"
