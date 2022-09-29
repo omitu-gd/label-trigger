@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy storefront
-        if: github.event.label.name == 'storefront'
-        run: echo "${{ github.event.label.name }} 1"
+      - name: Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.6
+      - run: |
+          bin/publish_flimbomble_test_results
+        if: contains(steps.pr-labels.outputs.labels, ' test-flimbomble ')
