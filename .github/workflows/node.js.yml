@@ -30,9 +30,9 @@ jobs:
     steps:
     - name: Get PR labels
       id: pr-labels
+      uses: joerick/pr-labels-action@v1.0.6
     - run: echo "DOES NOT CONTAIN storefront label"
       if: contains(steps.pr-labels.outputs.labels, 'storefront') == false
-      uses: joerick/pr-labels-action@v1.0.6
     - name: Checkout
       uses: actions/checkout@v2
       with:
