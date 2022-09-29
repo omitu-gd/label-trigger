@@ -20,5 +20,5 @@ jobs:
           fetch-depth: 0
           ref: ${{github.event.after}}
       - name: Get Commit Message
-        run: echo "$(git log -1 --format=%s)"
+        run: echo "$(/usr/bin/git log -1 --format=%s)"
           
