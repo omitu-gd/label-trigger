@@ -1,12 +1,25 @@
-name: das
+name: CHANGE ME
 
 on:
   pull_request:
-  label:
-    types: [created]
+    types:
+      - labeled
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Heelou"
+      - name: Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.6
+      - run: echo "HEY"
+        if: contains(steps.pr-labels.outputs.labels, 'storefront')
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.after}}
+      - name: Get Commit Message
+        run: echo "$(/usr/bin/git log -10 --format=%s)"
+      - name: Get Commit Message1
+        run: echo "$(git log -10 --format=%s) 123"
