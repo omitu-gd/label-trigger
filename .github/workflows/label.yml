@@ -1,7 +1,6 @@
 name: CHANGE ME
 
 on:
-  pull_request:
   label:
     types: [edited]
 
