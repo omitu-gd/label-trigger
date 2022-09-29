@@ -20,6 +20,5 @@ jobs:
           fetch-depth: 0
           ref: ${{github.event.after}}
       - name: Get Commit Message
-        run: |
-          MSG=$(git log -1 --format=%s)
-          echo "${MSG} ==== ${MSG}"
+        run: echo $(git log -1 --format=%s)
+          
