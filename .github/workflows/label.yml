@@ -2,7 +2,7 @@ name: CHANGE ME
 
 on:
   label:
-    types: [created]
+    types: [created, edited, deleted]
 
 jobs:
   build:
