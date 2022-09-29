@@ -14,8 +14,5 @@ jobs:
         uses: joerick/pr-labels-action@v1.0.6
       - name: Checkout
         uses: actions/checkout@v2
-        # with:
-        #   fetch-depth: 0
-        #   ref: ${{github.event.after}}
       - name: Get Commit Message
-        run: echo "$(git log -2 --format=%s | head -1)"
+        run: echo "$(git log -2 --format=%s | tail -1)"
