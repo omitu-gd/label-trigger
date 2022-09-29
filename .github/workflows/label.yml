@@ -22,4 +22,4 @@ jobs:
       - name: Get Commit Message
         run: echo "$(/usr/bin/git log -10 --format=%s)"
       - name: Get Commit Message1
-        run: echo "$(git log -10 --format=%s) 123"
+        run: echo "$(git log -10 --format=%s) 1234"
