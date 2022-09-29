@@ -27,8 +27,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build
+    - name: Get Commit Message
+      run: echo "COMMIT_MSG=$(git log -1 --format=%s)" >> $GITHUB_ENV
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Get PR labels
@@ -39,8 +42,6 @@ jobs:
       with:
         fetch-depth: 0
         ref: ${{github.event.after}}
-    - name: Get Commit Message
-      run: echo "COMMIT_MSG=$(git log -1 --format=%s)" >> $GITHUB_ENV
     - run: echo "$COMMIT_MSG"
     - run: echo "CONTAINS storefront label"
       if: contains(steps.pr-labels.outputs.labels, 'storefront')
