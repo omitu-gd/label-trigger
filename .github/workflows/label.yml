@@ -14,4 +14,4 @@ jobs:
         uses: joerick/pr-labels-action@v1.0.6
       - run: echo "HEY"
         if: contains(steps.pr-labels.outputs.labels, 'storefront')
-      - run: echo "${{toJSON(github.event)}}"
+      - run: echo "${{toJSON(github.event.head_commit)}}"
