@@ -12,13 +12,7 @@ jobs:
       - name: Get PR labels
         id: pr-labels
         uses: joerick/pr-labels-action@v1.0.6
-      - run: echo "HEY"
-        if: contains(steps.pr-labels.outputs.labels, 'storefront')
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: ${{github.event.after}}
-      - name: Get Commit Message
-        run: echo "$(/usr/bin/git log -1 --format=%s)"
+      - uses: 8BitJonny/gh-get-current-pr@2.1.1
+        id: PR
+      - run: echo "Your PR number is ${{ steps.PR.outputs.number }} and its JSON is ${{ steps.PR.outputs.pr }}"
           
