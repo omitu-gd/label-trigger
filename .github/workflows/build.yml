@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      jira_ticket_number: ${{ steps.step1.outputs.jira_ticket_number }}
+      jira_ticket_number: ${{ steps.get_jira_ticket.outputs.jira_ticket_number }}
     steps:
-      - id: step1
+      - id: get_jira_ticket
         run: echo "::set-output name=jira_ticket_number::hello"
   job2:
     runs-on: ubuntu-latest
