@@ -15,3 +15,14 @@ jobs:
       - run: echo "HEY"
         if: contains(steps.pr-labels.outputs.labels, 'storefront')
       - run: echo "${{toJSON(github.event.commits[0])}}"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.after}}
+      - name: Get Commit Message
+        run: |
+          MSG=$(git log --format=%B -n 1 ${{github.event.after}})
+          echo "::set-env name=COMMIT_MESSAGE::${MSG}"
+      - name: Echo commit message
+        run: echo "Commit SHA ${{github.event.after}}, commit message ${{env.COMMIT_MESSAGE}} (or ${COMMIT_MESSAGE})"
