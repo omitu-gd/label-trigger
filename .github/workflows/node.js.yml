@@ -28,9 +28,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - run: exit 1
     - name: Get PR labels
       id: pr-labels
+    - run: echo "DOES NOT CONTAIN storefront label"
+      if: contains(steps.pr-labels.outputs.labels, 'storefront') == false
       uses: joerick/pr-labels-action@v1.0.6
     - name: Checkout
       uses: actions/checkout@v2
@@ -40,5 +41,4 @@ jobs:
     - name: Get Commit Message
       run: echo "COMMIT_MSG=$(git log -1 --format=%s)" >> $GITHUB_ENV
     - run: echo "$COMMIT_MSG"
-    - run: echo "CONTAINS storefront label"
-      if: contains(steps.pr-labels.outputs.labels, 'storefront')
+
