@@ -3,10 +3,18 @@ name: CHANGE ME
 on:
   pull_request:
   label:
-    types: [created]
+    types: [edited]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Heelou"
+      - name: Labeled to preview
+        id: haslabel
+        uses: DanielTamkin/HasLabel@v1.0.4
+        with:
+          contains: 'preview'
+      - name: Test action
+        if: steps.haslabel.outputs.labeled-preview
+        run: echo 'This pull_request has this label.'
