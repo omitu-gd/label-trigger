@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{github.sha}}
-          echo ${{github.sha::6}}          
+          echo ${GITHUB_SHA::6}
+          echo ${GITHUB_SHA}         
 
 
