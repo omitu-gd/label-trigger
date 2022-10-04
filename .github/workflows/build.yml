@@ -19,7 +19,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     env:
-      test: ${{ env.GITHUB_SHA }}
+      test: ${{ github.GITHUB_SHA }}
     steps:
       - run: |
           echo $test
