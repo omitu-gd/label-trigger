@@ -20,8 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{toJSON(github)}}
-          echo github.sha
-          echo github.sha::6          
+          echo ${{github.sha}}
+          echo ${{github.sha::6}}          
 
 
