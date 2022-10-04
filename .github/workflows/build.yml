@@ -19,12 +19,13 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: job1
+    env:
+
     steps:
       - run: |
           echo ${{needs.job5}}
           [ -z ${{needs.job5}} ] && echo "flag=true" >> $GITHUB_ENV
-          echo ${flag}
           echo $flag
-          echo ${env.flag}
+      - run: echo $flag
 
 
