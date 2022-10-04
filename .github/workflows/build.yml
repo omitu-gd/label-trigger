@@ -22,7 +22,7 @@ jobs:
     steps:
       - run: |
           echo ${{needs.job5}}
-          [ -z ${{needs.job5}} ] && echo "${{needs.job5}}=asd"
+          [ -z ${{needs.job5}} ] && echo "${needs.job5}=asd"
           echo ${{needs.job5}}
 
 
