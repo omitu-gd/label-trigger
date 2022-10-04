@@ -22,7 +22,7 @@ jobs:
     steps:
       - run: |
           echo ${{needs.job1.outputs.jira_ticket_number}}
-          ${{needs.job1.outputs.jira_ticket_number}}=10
+          [ -z ${{needs.job5}} ] && echo "NULL"
           echo ${{needs.job1.outputs.jira_ticket_number}}
 
 
