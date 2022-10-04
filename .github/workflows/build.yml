@@ -20,5 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1
     steps:
-      - run: echo ${{needs.job1.outputs.jira_ticket_number}}
+      - run: |
+          echo ${{needs.job1.outputs.jira_ticket_number}}
+          ${{needs.job1.outputs.jira_ticket_number}}=10
+          echo ${{needs.job1.outputs.jira_ticket_number}}
+
 
