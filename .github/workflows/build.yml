@@ -25,5 +25,7 @@ jobs:
           [ -z ${{needs.job5}} ] && echo "flag=true" >> $GITHUB_ENV
           echo ${flag}
           echo $flag
+          echo ${{env.flag}}
+          echo ${env.flag}
 
 
