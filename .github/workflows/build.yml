@@ -18,14 +18,11 @@ jobs:
         run: echo "::set-output name=jira_ticket_number::hello"
   job2:
     runs-on: ubuntu-latest
-    needs: job1
+    env:
+      test: ${{ env.GITHUB_SHA::6 }}
     steps:
       - run: |
-          echo ${{needs.job5}}
-          [ -z ${{needs.job5}} ] && echo "flag=true" >> $GITHUB_ENV
-          echo $flag
-      - run: echo $flag
-      - run: |
-          echo ${{ toJSON(env) }}
+          echo $test
+          echo ${test}
 
 
