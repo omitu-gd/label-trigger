@@ -21,8 +21,8 @@ jobs:
     needs: job1
     steps:
       - run: |
-          echo ${{needs.job1.outputs.jira_ticket_number}}
-          [ -z ${{needs.job5}} ] && echo "NULL"
-          echo ${{needs.job1.outputs.jira_ticket_number}}
+          echo ${{needs.job5}}
+          [ -z ${{needs.job5}} ] && echo "${{needs.job5}}=asd"
+          echo ${{needs.job5}}
 
 
