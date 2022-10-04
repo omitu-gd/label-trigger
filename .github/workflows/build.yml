@@ -18,11 +18,9 @@ jobs:
         run: echo "::set-output name=jira_ticket_number::hello"
   job2:
     runs-on: ubuntu-latest
-    env:
-      test: ${{ github.GITHUB_SHA }}
     steps:
       - run: |
-          echo $test
-          echo ${test}
+          echo ${{toJSON(env)}}
+          echo ${{toJSON(github)}}
 
 
